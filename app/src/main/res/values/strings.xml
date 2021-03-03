@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestApp</string>
+    <string name="reminder">Салют</string>
+    <string name="done">вхід</string>
+</resources>
