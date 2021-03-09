@@ -18,7 +18,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        String url = "https://media.nature.com/lw800/magazine-assets/d41586-020-01430-5/d41586-020-01430-5_17977552.jpg";
+        //String url = "https://media.nature.com/lw800/magazine-assets/d41586-020-01430-5/d41586-020-01430-5_17977552.jpg";
+        String url = "http://10.0.2.2:6937/images/1.jpg";
 
         imageRequester = ImageRequester.getInstance();
         myImage = findViewById(R.id.myimg);
