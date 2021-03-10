@@ -1,55 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-        <TextView
-            android:id="@+id/textView1"
+        <com.android.volley.toolbox.NetworkImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/myimg">
+
+        </com.android.volley.toolbox.NetworkImageView>
+
+        <ImageView android:src="@drawable/logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Горизонтальная ориентация экрана"></TextView>
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Button1"></Button>
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Button2"></Button>
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Button3"></Button>
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Button4"></Button>
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Button5"></Button>
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>
