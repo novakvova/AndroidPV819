@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="@string/email_label"
+            android:hint="@string/password_label"
 
             tools:layout_editor_absoluteX="24dp"
 
@@ -70,7 +70,9 @@
                 android:id="@+id/textInputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:layout_marginTop="10dp" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
