@@ -9,9 +9,15 @@ import android.view.View;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.testapp.constants.Urls;
 import com.example.testapp.dto.LoginDto;
+import com.example.testapp.dto.LoginResultDto;
+import com.example.testapp.network.AccountService;
 import com.example.testapp.network.ImageRequester;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,5 +61,19 @@ public class LoginActivity extends AppCompatActivity {
         else
             passwordLayout.setError("");
 
+        AccountService.getInstance()
+                .getJSONApi()
+                .login(loginDto)
+                .enqueue(new Callback<LoginResultDto>() {
+                    @Override
+                    public void onResponse(Call<LoginResultDto> call, Response<LoginResultDto> response) {
+                        Log.d("super","Ok result good");
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResultDto> call, Throwable t) {
+                        Log.e("problem","Ok result good");
+                    }
+                });
     }
 }
