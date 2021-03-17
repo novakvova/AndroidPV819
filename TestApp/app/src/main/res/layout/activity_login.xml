@@ -15,15 +15,25 @@
         android:paddingBottom="20dp"
         >
 
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/myimg"
-            android:layout_width="200dp"
-            android:layout_height="120dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+                <com.example.testapp.network.CircularNetworkImageView
+                    android:id="@+id/myimg"
+                    android:layout_width="200dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-        </com.android.volley.toolbox.NetworkImageView>
+                </com.example.testapp.network.CircularNetworkImageView>
+
+<!--        <com.android.volley.toolbox.NetworkImageView-->
+<!--            android:id="@+id/myimg"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="120dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        </com.android.volley.toolbox.NetworkImageView>-->
 
         <TextView
             android:id="@+id/textHeader"
