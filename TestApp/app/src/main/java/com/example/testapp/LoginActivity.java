@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.android.volley.toolbox.NetworkImageView;
@@ -35,6 +37,27 @@ public class LoginActivity extends AppCompatActivity {
         imageRequester.setImageFromUrl(myImage, url);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        //TextView headerView = (TextView) findViewById(R.id.selectedMenuItem);
+        switch(id){
+            case R.id.exit_settings:
+                this.finishAffinity();
+                return true;
+        }
+        //headerView.setText(item.getTitle());
+        return super.onOptionsItemSelected(item);
+    }
+
 
     public void onClickLogin(View v) {
         final TextInputEditText email = findViewById(R.id.textInputEmail);
