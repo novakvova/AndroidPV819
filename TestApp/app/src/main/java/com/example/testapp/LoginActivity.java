@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<LoginResultDto> call, Throwable t) {
-                        Log.e("problem","Ok result good");
+                        Log.e("problem","problem API"+ t.getMessage());
                     }
                 });
     }

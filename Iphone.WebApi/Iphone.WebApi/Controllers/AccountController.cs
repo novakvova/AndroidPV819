@@ -17,7 +17,10 @@ namespace Iphone.WebApi.Controllers
         public async Task<IActionResult> Login([FromBody]LoginDTO model)
         {
 
-            return Ok();
+            return Ok(new
+            {
+                text="Ковбаса"
+            });
         }
     }
 }
