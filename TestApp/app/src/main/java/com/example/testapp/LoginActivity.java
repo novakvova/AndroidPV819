@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        String url = Urls.BASE+ "/images/lock.png";
+        String url = Urls.BASE+ "/images/1.jpg";
 
         imageRequester = ImageRequester.getInstance();
         myImage = findViewById(R.id.myimg);
