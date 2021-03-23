@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Iphone.WebApi.Controllers
@@ -16,7 +17,7 @@ namespace Iphone.WebApi.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody]LoginDTO model)
         {
-
+            Thread.Sleep(2000);
             return Ok(new
             {
                 text="Ковбаса"

@@ -14,6 +14,7 @@ import com.example.testapp.dto.LoginDto;
 import com.example.testapp.dto.LoginResultDto;
 import com.example.testapp.network.AccountService;
 import com.example.testapp.network.ImageRequester;
+import com.example.testapp.utils.CommonUtils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -70,20 +71,20 @@ public class LoginActivity extends AppCompatActivity {
                 password.getText().toString()
         );
 
-        if(loginDto.getEmail().isEmpty()) {
-            emailLayout.setError("Пуста пошта!");
-            return;
-        }
-        else
-            emailLayout.setError("");
-
-        if(loginDto.getPassword().isEmpty()) {
-            passwordLayout.setError("Пустий пароль!");
-            return;
-        }
-        else
-            passwordLayout.setError("");
-
+//        if(loginDto.getEmail().isEmpty()) {
+//            emailLayout.setError("Пуста пошта!");
+//            return;
+//        }
+//        else
+//            emailLayout.setError("");
+//
+//        if(loginDto.getPassword().isEmpty()) {
+//            passwordLayout.setError("Пустий пароль!");
+//            return;
+//        }
+//        else
+//            passwordLayout.setError("");
+        CommonUtils.showLoading(this);
         AccountService.getInstance()
                 .getJSONApi()
                 .login(loginDto)
@@ -91,11 +92,13 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LoginResultDto> call, Response<LoginResultDto> response) {
                         Log.d("super","Ok result good");
+                        CommonUtils.hideLoading();
                     }
 
                     @Override
                     public void onFailure(Call<LoginResultDto> call, Throwable t) {
                         Log.e("problem","problem API"+ t.getMessage());
+                        CommonUtils.hideLoading();
                     }
                 });
     }
