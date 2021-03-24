@@ -8,9 +8,9 @@ namespace Iphone.WebApi.DTO
 {
     public record LoginDTO
     {
-        [Required, EmailAddress]
+        [Required(ErrorMessage = "Обовязкове поле"), EmailAddress(ErrorMessage = "Не валідна пошта")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Обовязкове поле")]
         public string Password { get; set; }
     }
 }

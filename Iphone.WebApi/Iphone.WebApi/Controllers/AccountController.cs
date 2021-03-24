@@ -1,4 +1,5 @@
 ﻿using Iphone.WebApi.DTO;
+using Iphone.WebApi.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,6 +19,11 @@ namespace Iphone.WebApi.Controllers
         public async Task<IActionResult> Login([FromBody]LoginDTO model)
         {
             Thread.Sleep(2000);
+            if(!ModelState.IsValid)
+            {
+                var errors = CustomValidator.GetErrorsByModel(ModelState);
+                return BadRequest(errors);
+            }
             return Ok(new
             {
                 text="Ковбаса"
