@@ -91,8 +91,22 @@ public class LoginActivity extends AppCompatActivity {
                 .enqueue(new Callback<LoginResultDto>() {
                     @Override
                     public void onResponse(Call<LoginResultDto> call, Response<LoginResultDto> response) {
-                        Log.d("super","Ok result good");
+//                        Log.d("super","Ok result good");
                         CommonUtils.hideLoading();
+                        if(response.isSuccessful())
+                        {
+
+                        }
+                        else
+                        {
+                            try {
+                                String json = response.errorBody().string();
+                                Log.e("BadRequest", json);
+                            } catch (Exception ex) {
+
+                            }
+
+                        }
                     }
 
                     @Override
