@@ -34,8 +34,11 @@ namespace Iphone.WebApi.Controllers
 
             if(!_context.Logins.Any(x=> x.Email == model.Email))
             {
-                var errors = CustomValidator.GetErrorsByModel(ModelState);
-                return BadRequest();
+                //var errors = CustomValidator.GetErrorsByModel(ModelState);
+                return BadRequest(new
+                {
+                    invalid="Bad request"
+                });
             }
             return Ok(new
             {
