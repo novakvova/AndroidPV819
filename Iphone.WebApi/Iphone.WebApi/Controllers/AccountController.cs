@@ -14,6 +14,13 @@ namespace Iphone.WebApi.Controllers
     [Produces("application/json")]
     public class AccountController : ControllerBase
     {
+        private UserDBContext _context;
+
+        public AccountController(UserDBContext context)
+        {
+            _context = context;
+        }
+
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody]LoginDTO model)
@@ -23,6 +30,12 @@ namespace Iphone.WebApi.Controllers
             {
                 var errors = CustomValidator.GetErrorsByModel(ModelState);
                 return BadRequest(errors);
+            }
+
+            if(!_context.Logins.Any(x=> x.Email == model.Email))
+            {
+                var errors = CustomValidator.GetErrorsByModel(ModelState);
+                return BadRequest();
             }
             return Ok(new
             {
