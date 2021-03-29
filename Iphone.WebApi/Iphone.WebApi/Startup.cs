@@ -1,3 +1,4 @@
+using Iphone.EFData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,7 +36,10 @@ namespace Iphone.WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Iphone.WebApi", Version = "v1" });
             });
-            services.AddDbContext<UserDBContext>(options => options.UseInMemoryDatabase(databaseName: "Logins"));
+
+            services.AddDbContext<EFDataContext>(opt => opt
+                .UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<UserDBContext>(options => options.UseInMemoryDatabase(databaseName: "Logins"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
