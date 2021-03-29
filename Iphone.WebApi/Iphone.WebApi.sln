@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iphone.EFData", "Iphone.EFD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPhone.Application", "IPhone.Application\IPhone.Application.csproj", "{353D3523-FFC8-488A-9E30-50EEFD6784A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iphone.Infrastructure", "Iphone.Infrastructure\Iphone.Infrastructure.csproj", "{21A82822-0789-4C92-A4E4-303A200D3430}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{353D3523-FFC8-488A-9E30-50EEFD6784A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{353D3523-FFC8-488A-9E30-50EEFD6784A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{353D3523-FFC8-488A-9E30-50EEFD6784A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A82822-0789-4C92-A4E4-303A200D3430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A82822-0789-4C92-A4E4-303A200D3430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A82822-0789-4C92-A4E4-303A200D3430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A82822-0789-4C92-A4E4-303A200D3430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
