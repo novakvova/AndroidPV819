@@ -1,13 +1,13 @@
 package com.example.testapp.dto;
 
 public class LoginResultDto {
-    private String text;
+    private String token;
 
-    public String getText() {
-        return text;
+    public String getToken() {
+        return token;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setToken(String token) {
+        this.token = token;
     }
 }
