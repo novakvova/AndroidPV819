@@ -35,16 +35,16 @@ namespace IPhone.Application.Account.Registration
 				throw new RestException(HttpStatusCode.BadRequest, new { Email = "Email already exist" });
 			}
 
-			if (await _context.Users.Where(x => x.UserName == request.UserName).AnyAsync())
-			{
-				throw new RestException(HttpStatusCode.BadRequest, new { UserName = "UserName already exist" });
-			}
+			//if (await _context.Users.Where(x => x.UserName == request.UserName).AnyAsync())
+			//{
+			//	throw new RestException(HttpStatusCode.BadRequest, new { UserName = "UserName already exist" });
+			//}
 
 			var user = new AppUser
 			{
 				DisplayName = request.DisplayName,
 				Email = request.Email,
-				UserName = request.UserName
+				UserName = request.Email //request.UserName
 			};
 
 			var result = await _userManager.CreateAsync(user, request.Password);
