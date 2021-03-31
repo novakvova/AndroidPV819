@@ -64,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                         {
                             try {
                                 String json = response.errorBody().string();
+
                                 Log.d("Bad request: ", json);
                             } catch (Exception ex) {
 
