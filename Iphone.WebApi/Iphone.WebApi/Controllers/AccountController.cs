@@ -1,6 +1,7 @@
 ﻿using Iphone.WebApi.DTO;
 using Iphone.WebApi.Helpers;
 using IPhone.Application.Account;
+using IPhone.Application.Account.Login;
 using IPhone.Application.Account.Registration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -53,11 +54,11 @@ namespace Iphone.WebApi.Controllers
     [AllowAnonymous]
     public class AccountController : BaseController
     {
-        //[HttpPost("login")]
-        //public async Task<ActionResult<UserViewModel>> LoginAsync(LoginQuery query)
-        //{
-        //    return await Mediator.Send(query);
-        //}
+        [HttpPost("login")]
+        public async Task<ActionResult<UserViewModel>> LoginAsync(LoginCommand query)
+        {
+            return await Mediator.Send(query);
+        }
 
         [HttpPost("registration")]
         public async Task<ActionResult<UserViewModel>> RegistrationAsync(RegistrationCommand command)

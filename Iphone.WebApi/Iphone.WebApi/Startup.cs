@@ -4,6 +4,7 @@ using Iphone.Domain;
 using Iphone.EFData;
 using Iphone.Infrastructure.Security;
 using Iphone.WebApi.Middleware;
+using IPhone.Application.Account.Login;
 using IPhone.Application.Account.Registration;
 using IPhone.Application.Interfaces;
 using MediatR;
@@ -68,6 +69,7 @@ namespace Iphone.WebApi
                 .AddFluentValidation();
 
             services.AddTransient<IValidator<RegistrationCommand>, RegistrationValidation>();
+            services.AddTransient<IValidator<LoginCommand>, LoginValidation>();
 
             services.TryAddSingleton<ISystemClock, SystemClock>();
 
