@@ -57,16 +57,16 @@ namespace Iphone.WebApi
             
             services.AddMediatR(typeof(RegistrationHandler).Assembly);
 
-            services.AddMvc(option =>
-            {
-                option.EnableEndpointRouting = false;
-                var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-                option.Filters.Add(new AuthorizeFilter(policy));
-            })
-                .SetCompatibilityVersion(CompatibilityVersion.Latest)
-                .AddFluentValidation();
+            //services.AddMvc(option =>
+            //{
+            //    option.EnableEndpointRouting = false;
+            //    var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
+            //    option.Filters.Add(new AuthorizeFilter(policy));
+            //})
+            //    .SetCompatibilityVersion(CompatibilityVersion.Latest)
+            //    .AddFluentValidation();
 
             services.AddTransient<IValidator<RegistrationCommand>, RegistrationValidation>();
             services.AddTransient<IValidator<LoginCommand>, LoginValidation>();
@@ -80,17 +80,24 @@ namespace Iphone.WebApi
                 .AddDefaultTokenProviders();
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"]));
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
-                opt =>
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    opt.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = key,
-                        ValidateAudience = false,
-                        ValidateIssuer = false,
-                    };
-                });
+                    IssuerSigningKey = key,
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -113,6 +120,9 @@ namespace Iphone.WebApi
                     }
                 });
             });
+
+            services.AddControllers()
+                .AddFluentValidation();
 
         }
 
@@ -144,6 +154,7 @@ namespace Iphone.WebApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
