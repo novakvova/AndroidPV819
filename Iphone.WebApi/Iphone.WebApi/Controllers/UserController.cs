@@ -1,5 +1,6 @@
 ﻿using IPhone.Application.Account;
 using IPhone.Application.User.Profile;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,6 +15,7 @@ namespace Iphone.WebApi.Controllers
     public class UserController : BaseController
     {
         [HttpGet("profile")]
+        [Authorize]
         public async Task<ActionResult<UserViewModel>> ProfileAsync()
         {
             UserProfileCommand userCommand = new UserProfileCommand
