@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity"
-        android:paddingTop="56dp"
+        android:paddingTop="36dp"
         android:paddingHorizontal="24dp"
         android:paddingBottom="20dp"
         >
@@ -98,6 +98,18 @@
             app:layout_constraintTop_toBottomOf="@+id/textFieldPassword"
             app:layout_constraintVertical_bias="0.217" />
 
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onClickRegister"
+            android:text="Реєструватися"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+            app:layout_constraintVertical_bias="0.217" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
