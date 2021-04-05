@@ -66,6 +66,8 @@ public class RegisterActivity extends AppCompatActivity {
                             passwordLayout.setError("");
                             LoginResultDto result = response.body();
                             Log.d("Good Request", result.getToken());
+                            Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+                            startActivity(intent);
                         }
                         else
                         {

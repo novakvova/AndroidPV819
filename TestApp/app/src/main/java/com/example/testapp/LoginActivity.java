@@ -102,7 +102,13 @@ public class LoginActivity extends AppCompatActivity {
                         CommonUtils.hideLoading();
                         if(response.isSuccessful())
                         {
-
+                            textInvalid.setText("");
+                            emailLayout.setError("");
+                            passwordLayout.setError("");
+                            LoginResultDto result = response.body();
+                            Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                            startActivity(intent);
+//                            Log.d("Good Request", result.getToken());
                         }
                         else
                         {
