@@ -32,7 +32,7 @@ namespace IPhone.Application.Account.Login
             var user = await _userManager.FindByNameAsync(request.Email);
             if(user == null)
             {
-                throw new RestException(HttpStatusCode.Unauthorized);
+                throw new RestException(HttpStatusCode.Unauthorized, new { Invalid = new[] { "Дані вказано не вірно!" } });
             }
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, request.Password, false);
@@ -48,7 +48,7 @@ namespace IPhone.Application.Account.Login
                 };
             }
 
-            throw new RestException(HttpStatusCode.Unauthorized);
+            throw new RestException(HttpStatusCode.Unauthorized, new { Invalid = new[] { "Дані вказано не вірно!" } });
         }
     }
 }

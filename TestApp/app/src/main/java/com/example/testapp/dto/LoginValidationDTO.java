@@ -1,9 +1,9 @@
 package com.example.testapp.dto;
 
-public class RegisterValidationDTO {
+public class LoginValidationDTO {
     private int status;
     private String title;
-    private RegisterErrorDTO errors;
+    private LoginErrorDTO errors;
 
     public int getStatus() {
         return status;
@@ -21,11 +21,11 @@ public class RegisterValidationDTO {
         this.title = title;
     }
 
-    public RegisterErrorDTO getErrors() {
+    public LoginErrorDTO getErrors() {
         return errors;
     }
 
-    public void setErrors(RegisterErrorDTO errors) {
+    public void setErrors(LoginErrorDTO errors) {
         this.errors = errors;
     }
 }

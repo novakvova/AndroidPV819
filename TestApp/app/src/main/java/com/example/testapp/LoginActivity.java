@@ -8,16 +8,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.testapp.constants.Urls;
 import com.example.testapp.dto.LoginDto;
 import com.example.testapp.dto.LoginResultDto;
+import com.example.testapp.dto.LoginValidationDTO;
+import com.example.testapp.dto.RegisterValidationDTO;
 import com.example.testapp.network.AccountService;
 import com.example.testapp.network.ImageRequester;
 import com.example.testapp.utils.CommonUtils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ImageRequester imageRequester;
     private NetworkImageView myImage;
+    private TextView textInvalid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         imageRequester = ImageRequester.getInstance();
         myImage = findViewById(R.id.myimg);
         imageRequester.setImageFromUrl(myImage, url);
+        textInvalid = findViewById(R.id.textLoginInvalid);
 
     }
 
@@ -102,7 +108,35 @@ public class LoginActivity extends AppCompatActivity {
                         {
                             try {
                                 String json = response.errorBody().string();
-                                Log.e("BadRequest", json);
+                                LoginValidationDTO result = new Gson().fromJson(json, LoginValidationDTO.class);
+                                String str="";
+                                if(result.getErrors().getEmail()!=null)
+                                {
+                                    for (String item: result.getErrors().getEmail()) {
+                                        str+=item+"\n";
+                                    }
+                                }
+                                emailLayout.setError(str);
+
+                                str="";
+                                if(result.getErrors().getPassword()!=null)
+                                {
+                                    for (String item: result.getErrors().getPassword()) {
+                                        str+=item+"\n";
+                                    }
+                                }
+                                passwordLayout.setError(str);
+
+                                str="";
+                                if(result.getErrors().getInvalid()!=null)
+                                {
+                                    for (String item: result.getErrors().getInvalid()) {
+                                        str+=item+"\n";
+                                    }
+                                }
+                                textInvalid.setText(str);
+
+                                Log.d("Bad request: ", json);
                             } catch (Exception ex) {
 
                             }
