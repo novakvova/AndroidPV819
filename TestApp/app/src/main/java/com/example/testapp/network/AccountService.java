@@ -14,6 +14,7 @@ public class AccountService {
     private Retrofit mRetrofit;
 
     public AccountService() {
+
         OkHttpClient.Builder client = new OkHttpClient
                 .Builder()
                 .readTimeout(60, TimeUnit.SECONDS)

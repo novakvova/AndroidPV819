@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.testapp.application.HomeApplication;
 import com.example.testapp.constants.Urls;
 import com.example.testapp.dto.LoginDto;
 import com.example.testapp.dto.LoginResultDto;
@@ -18,6 +19,7 @@ import com.example.testapp.dto.LoginValidationDTO;
 import com.example.testapp.dto.RegisterValidationDTO;
 import com.example.testapp.network.AccountService;
 import com.example.testapp.network.ImageRequester;
+import com.example.testapp.security.JwtSecurityService;
 import com.example.testapp.utils.CommonUtils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -106,6 +108,10 @@ public class LoginActivity extends AppCompatActivity {
                             emailLayout.setError("");
                             passwordLayout.setError("");
                             LoginResultDto result = response.body();
+
+                            JwtSecurityService jwtService = (JwtSecurityService)HomeApplication.getInstance();
+                            jwtService.saveJwtToken(result.getToken());
+
                             Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                             startActivity(intent);
 //                            Log.d("Good Request", result.getToken());
