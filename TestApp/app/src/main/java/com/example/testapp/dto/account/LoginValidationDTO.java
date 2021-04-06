@@ -1,4 +1,4 @@
-package com.example.testapp.dto;
+package com.example.testapp.dto.account;
 
 public class LoginValidationDTO {
     private int status;

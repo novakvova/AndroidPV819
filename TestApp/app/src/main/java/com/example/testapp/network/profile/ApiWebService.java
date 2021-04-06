@@ -1,6 +1,8 @@
-package com.example.testapp.network;
+package com.example.testapp.network.profile;
 
 import com.example.testapp.constants.Urls;
+import com.example.testapp.network.account.ApiAccount;
+import com.example.testapp.network.interceptors.JWTInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -8,17 +10,18 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AccountService {
-    private static AccountService mInstance;
+public class ApiWebService {
+    private static ApiWebService mInstance;
     private static final String BASE_URL = Urls.BASE;
     private Retrofit mRetrofit;
 
-    public AccountService() {
+    public ApiWebService() {
 
         OkHttpClient.Builder client = new OkHttpClient
                 .Builder()
                 .readTimeout(60, TimeUnit.SECONDS)
-                .connectTimeout(60, TimeUnit.SECONDS);
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .addInterceptor(new JWTInterceptor());
 
         this.mRetrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -27,14 +30,14 @@ public class AccountService {
             .build();
     }
 
-    public static AccountService getInstance() {
+    public static ApiWebService getInstance() {
         if(mInstance==null)
-            mInstance=new AccountService();
+            mInstance=new ApiWebService();
         return mInstance;
     }
 
-    public ApiAccount getJSONApi() {
-        return mRetrofit.create(ApiAccount.class);
+    public ApiWebRequest getJSONApi() {
+        return mRetrofit.create(ApiWebRequest.class);
     }
 }
 

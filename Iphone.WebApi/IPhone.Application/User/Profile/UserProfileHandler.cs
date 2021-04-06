@@ -14,10 +14,13 @@ namespace IPhone.Application.User.Profile
     public class UserProfileHandler : IRequestHandler<UserProfileCommand, UserViewModel>
     {
 
-        public Task<UserViewModel> Handle(UserProfileCommand request, CancellationToken cancellationToken)
+        public async Task<UserViewModel> Handle(UserProfileCommand request, CancellationToken cancellationToken)
         {
-
-            throw new RestException(HttpStatusCode.NotFound);
+            return new UserViewModel
+            {
+                Image = "asfd.jpg"
+            };
+            //throw new RestException(HttpStatusCode.NotFound);
         }
     }
 }

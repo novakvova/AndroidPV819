@@ -8,12 +8,14 @@ import android.util.Log;
 import android.view.View;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.testapp.application.HomeApplication;
 import com.example.testapp.constants.Urls;
-import com.example.testapp.dto.LoginResultDto;
-import com.example.testapp.dto.RegisterDTO;
-import com.example.testapp.dto.RegisterValidationDTO;
-import com.example.testapp.network.AccountService;
+import com.example.testapp.dto.account.LoginResultDto;
+import com.example.testapp.dto.account.RegisterDTO;
+import com.example.testapp.dto.account.RegisterValidationDTO;
+import com.example.testapp.network.account.AccountService;
 import com.example.testapp.network.ImageRequester;
+import com.example.testapp.security.JwtSecurityService;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
@@ -65,7 +67,8 @@ public class RegisterActivity extends AppCompatActivity {
                             emailLayout.setError("");
                             passwordLayout.setError("");
                             LoginResultDto result = response.body();
-                            Log.d("Good Request", result.getToken());
+                            JwtSecurityService jwtService = (JwtSecurityService) HomeApplication.getInstance();
+                            jwtService.saveJwtToken(result.getToken());
                             Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
                             startActivity(intent);
                         }

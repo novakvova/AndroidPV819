@@ -1,4 +1,4 @@
-package com.example.testapp.dto;
+package com.example.testapp.dto.account;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

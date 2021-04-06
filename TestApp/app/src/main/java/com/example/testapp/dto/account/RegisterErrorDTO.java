@@ -1,15 +1,14 @@
-package com.example.testapp.dto;
+package com.example.testapp.dto.account;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LoginErrorDTO {
+public class RegisterErrorDTO {
     @SerializedName("Email")
     private String [] email;
     @SerializedName("Password")
     private String [] password;
-
-    @SerializedName("Invalid")
-    private String [] invalid;
+    @SerializedName("DisplayName")
+    private String [] displayName;
 
     public String[] getEmail() {
         return email;
@@ -27,11 +26,11 @@ public class LoginErrorDTO {
         this.password = password;
     }
 
-    public String[] getInvalid() {
-        return invalid;
+    public String[] getDisplayName() {
+        return displayName;
     }
 
-    public void setInvalid(String[] invalid) {
-        this.invalid = invalid;
+    public void setDisplayName(String[] displayName) {
+        this.displayName = displayName;
     }
 }

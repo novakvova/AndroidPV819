@@ -1,8 +1,8 @@
-package com.example.testapp.network;
+package com.example.testapp.network.account;
 
-import com.example.testapp.dto.LoginDto;
-import com.example.testapp.dto.LoginResultDto;
-import com.example.testapp.dto.RegisterDTO;
+import com.example.testapp.dto.account.LoginDto;
+import com.example.testapp.dto.account.LoginResultDto;
+import com.example.testapp.dto.account.RegisterDTO;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
