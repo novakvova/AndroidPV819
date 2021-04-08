@@ -3,15 +3,23 @@ package com.example.testapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.example.testapp.application.HomeApplication;
+import com.example.testapp.constants.Urls;
 import com.example.testapp.dto.profile.ProfileResultDTO;
+import com.example.testapp.network.ImageRequester;
 import com.example.testapp.network.profile.ApiWebService;
 import com.example.testapp.security.JwtSecurityService;
 import com.example.testapp.utils.CommonUtils;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -20,11 +28,17 @@ import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private ImageRequester imageRequester;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prifile);
+        setContentView(R.layout.activity_profile);
 
+        final TextView email = findViewById(R.id.profileEmail);
+        final NetworkImageView imageView = findViewById(R.id.profileImage);
+        final TextView name = findViewById(R.id.profileName);
+        final TextView phone = findViewById(R.id.profilePhone);
+        imageRequester = ImageRequester.getInstance();
         CommonUtils.showLoading(this);
         ApiWebService.getInstance()
                 .getJSONApi()
@@ -38,6 +52,12 @@ public class ProfileActivity extends AppCompatActivity {
                         {
                             ProfileResultDTO result = response.body();
                             String image = result.getImage();
+                            String url = Urls.BASE+"/images/" + image;
+
+                            email.setText(result.getEmail());
+                            imageRequester.setImageFromUrl(imageView, url);
+                            name.setText(result.getUserName());
+                            phone.setText(result.getPhone());
 //                            Log.d("Good Request", result.getToken());
                         }
                         else

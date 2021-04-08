@@ -48,12 +48,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         final TextInputLayout passwordLayout = findViewById(R.id.inputLayoutPassword);
         final TextInputEditText password = findViewById(R.id.textFieldPassword);
+
+        final TextInputLayout phoneLayout = findViewById(R.id.inputLayoutPhone);
+        final TextInputEditText phone = findViewById(R.id.textFieldPhone);
         //Log.d("clickLogin", email.getText().toString());
         //emailLayout.setError("У нас проблеми");
         RegisterDTO model = new RegisterDTO(
                 email.getText().toString(),
                 password.getText().toString(),
-                displayName.getText().toString()
+                displayName.getText().toString(),
+                phone.getText().toString()
         );
         AccountService.getInstance()
                 .getJSONApi()
@@ -66,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                             displayNameLayout.setError("");
                             emailLayout.setError("");
                             passwordLayout.setError("");
+                            phoneLayout.setError("");
                             LoginResultDto result = response.body();
                             JwtSecurityService jwtService = (JwtSecurityService) HomeApplication.getInstance();
                             jwtService.saveJwtToken(result.getToken());
@@ -94,6 +99,15 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
                                 }
                                 emailLayout.setError(str);
+
+                                str="";
+                                if(result.getErrors().getPhone()!=null)
+                                {
+                                    for (String item: result.getErrors().getPhone()) {
+                                        str+=item+"\n";
+                                    }
+                                }
+                                phoneLayout.setError(str);
 
                                 str="";
                                 if(result.getErrors().getPassword()!=null)

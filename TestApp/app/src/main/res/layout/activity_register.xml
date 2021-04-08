@@ -82,6 +82,22 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Телефон"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword"
+            tools:layout_editor_absoluteX="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textFieldPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="wrap_content"
@@ -91,7 +107,7 @@
             android:onClick="onClickRegister"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutPhone" />
 
         <Button
             android:layout_width="wrap_content"

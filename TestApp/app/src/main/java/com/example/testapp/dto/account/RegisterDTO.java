@@ -4,15 +4,23 @@ public class RegisterDTO {
     private String email;
     private String password;
     private String displayName;
+    private String phone;
 
-    public RegisterDTO() {
+    public String getPhone() {
+        return phone;
     }
 
-    public RegisterDTO(String email, String password, String dislplayName) {
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public RegisterDTO(String email, String password, String displayName, String phone) {
         this.email = email;
         this.password = password;
-        this.displayName = dislplayName;
+        this.displayName = displayName;
+        this.phone = phone;
     }
+
 
     public String getEmail() {
         return email;
