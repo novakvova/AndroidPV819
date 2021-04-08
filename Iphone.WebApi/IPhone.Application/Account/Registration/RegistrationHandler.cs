@@ -42,6 +42,7 @@ namespace IPhone.Application.Account.Registration
 
 			var user = new AppUser
 			{
+				Phone = request.Phone,
 				DisplayName = request.DisplayName,
 				Email = request.Email,
 				UserName = request.Email //request.UserName
@@ -56,7 +57,8 @@ namespace IPhone.Application.Account.Registration
 					DisplayName = user.DisplayName,
 					Token = _jwtGenerator.CreateToken(user),
 					UserName = user.UserName,
-					Image = null
+					Image = null,
+					Phone = user.Phone
 				};
 			}
 

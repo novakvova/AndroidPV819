@@ -10,6 +10,7 @@ namespace Iphone.Domain
     public class AppUser : IdentityUser<long>
     {
         public string DisplayName { get; set; }
+        public string Phone { get; set; }
         public virtual ICollection<AppUserRole> UserRoles { get; set; }
     }
 }
