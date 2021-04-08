@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ import retrofit2.Response;
 public class ProfileActivity extends AppCompatActivity {
 
     private ImageRequester imageRequester;
+    private static int RESULT_LOAD_IMAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,5 +108,12 @@ public class ProfileActivity extends AppCompatActivity {
                         CommonUtils.hideLoading();
                     }
                 });
+    }
+    public void SelectImage(View view) {
+        Intent intent = new Intent(this, ChangeImageActivity.class);
+        startActivity(intent);
+//        Intent i = new Intent(
+//                Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 }

@@ -16,6 +16,17 @@
             android:layout_height="350dp"
             android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/layoutLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <com.example.testapp.network.CircularNetworkImageView
                 android:id="@+id/profileImage"
                 android:layout_width="150dp"
@@ -24,6 +35,14 @@
                 android:layout_marginTop="45dp"
                 android:src="@drawable/buttonstyle" />
 
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:onClick="SelectImage"
+                app:icon="@drawable/ic_baseline_add_a_photo_24" />
+
+        </LinearLayout>
             <TextView
                 android:id="@+id/profileName"
                 android:layout_width="wrap_content"
