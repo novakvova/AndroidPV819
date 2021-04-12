@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApp">
-        <activity android:name=".ChangeImageActivity"></activity>
+        <activity android:name=".RecyclerActivity"></activity>
+        <activity android:name=".ChangeImageActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">

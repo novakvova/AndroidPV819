@@ -2,6 +2,7 @@ package com.example.testapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,8 @@ import com.example.testapp.utils.CommonUtils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
+
+import java.util.concurrent.RecursiveAction;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,6 +64,11 @@ public class LoginActivity extends AppCompatActivity {
         switch(id){
             case R.id.exit_settings:
                 this.finishAffinity();
+                return true;
+
+            case R.id.list_settings:
+                Intent intent = new Intent(LoginActivity.this, RecyclerActivity.class);
+                startActivity(intent);
                 return true;
         }
         //headerView.setText(item.getTitle());
