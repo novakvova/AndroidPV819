@@ -8,18 +8,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.example.testapp.R;
+import com.example.testapp.constants.Urls;
+import com.example.testapp.dto.profile.ProfileResultDTO;
+import com.example.testapp.network.ImageRequester;
 
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
 
-    private List<Model> modelList;
+    private List<ProfileResultDTO> modelList;
     private Context context;
+    private ImageRequester imageRequester;
 
-    public CustomAdapter(List<Model> modelList, Context context) {
+    public CustomAdapter(List<ProfileResultDTO> modelList, Context context) {
         this.modelList = modelList;
         this.context = context;
+        imageRequester = ImageRequester.getInstance();
     }
 
     @NonNull
@@ -33,10 +39,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         if (modelList != null && position < modelList.size()) {
-            Model model = modelList.get(position);
-            holder.txt.setText(model.getName());
-            holder.sub_txt.setText(model.getVersion());
-            holder.img.setImageResource(R.drawable.froyo);
+            ProfileResultDTO model = modelList.get(position);
+            holder.txt.setText(model.getEmail());
+            holder.sub_txt.setText(model.getPhone());
+            String url = Urls.BASE+"/images/" + model.getImage();
+            imageRequester.setImageFromUrl((NetworkImageView) holder.img, url);
         }
     }
 

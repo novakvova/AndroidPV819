@@ -26,5 +26,13 @@ namespace Iphone.WebApi.Controllers
             
             return await Mediator.Send(userCommand);
         }
+
+        [HttpGet("users")]
+        public async Task<ActionResult<List<UserViewModel>>> UsersAsync()
+        {
+            UserListCommand userCommand = new UserListCommand {              
+            };
+            return await Mediator.Send(userCommand);
+        }
     }
 }
