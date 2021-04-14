@@ -34,5 +34,14 @@ namespace Iphone.WebApi.Controllers
             };
             return await Mediator.Send(userCommand);
         }
+        [HttpPost("upload-image")]
+        public async Task<ActionResult<List<UserViewModel>>> UsersAsync(UserUploadImageCommand command)
+        {
+            //UserListCommand userCommand = new UserListCommand
+            //{
+            //};
+            //return await Mediator.Send(userCommand);
+            return null;
+        }
     }
 }
