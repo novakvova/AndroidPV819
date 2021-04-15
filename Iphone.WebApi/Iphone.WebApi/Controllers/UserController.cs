@@ -45,43 +45,11 @@ namespace Iphone.WebApi.Controllers
             return await Mediator.Send(userCommand);
         }
         [HttpPost("upload-image")]
-        public async Task<ActionResult<List<UserViewModel>>> UsersAsync(UserUploadImageCommand command)
+        public async Task<ActionResult<UserViewModel>> UsersAsync(UserUploadImageCommand command)
         {
-            string filename = Guid.NewGuid().ToString() + ".jpg";
-            string path = _webHostEnvironment.ContentRootPath + @"\ProfileImages";
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-            path = path + @"\" + filename;
-            if (command.Image == null)
-            {
-                return null;
-            }
-            if (command.Image.Length == 0)
-            {
-                return null;
-            }
-
-
-            using (Bitmap b = ImageWorker.Base64StringToBitmap(command.Image))
-            {
-                Bitmap savedImage = ImageWorker.CreateImage(b, 400, 360);
-                if (savedImage != null)
-                {
-                    savedImage.Save(path, ImageFormat.Jpeg);
-                    return null;
-                }
-                else
-                {
-                    return null;
-                }
-            };
-            //UserListCommand userCommand = new UserListCommand
-            //{
-            //};
-            //return await Mediator.Send(userCommand);
-            return null;
+            command.UserName = User.Claims
+                .FirstOrDefault(x => x.Type == "username").Value;
+            return await Mediator.Send(command);
         }
     }
 }

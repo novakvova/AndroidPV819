@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using Iphone.Domain;
 using Iphone.EFData;
 using Iphone.Infrastructure.Security;
+using Iphone.Infrastructure.Services;
 using Iphone.WebApi.Middleware;
 using IPhone.Application.Account.Login;
 using IPhone.Application.Account.Registration;
@@ -74,6 +75,7 @@ namespace Iphone.WebApi
             services.TryAddSingleton<ISystemClock, SystemClock>();
 
             services.AddScoped<IJwtGenerator, JwtGenerator>();
+            services.AddTransient<IUserService, UserService>();
 
             services.AddIdentity<AppUser, AppRole>(options => options.Stores.MaxLengthForKeys = 128)
                 .AddEntityFrameworkStores<EFDataContext>()

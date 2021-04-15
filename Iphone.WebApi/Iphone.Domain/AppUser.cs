@@ -11,6 +11,7 @@ namespace Iphone.Domain
     {
         public string DisplayName { get; set; }
         public string Phone { get; set; }
+        public string Image { get; set; }
         public virtual ICollection<AppUserRole> UserRoles { get; set; }
     }
 }
